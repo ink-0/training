@@ -9,21 +9,23 @@ let counter = 1;
 const size = carouselContents[0].clientWidth; //100
 console.log(size);
 //transform:translate(-200px)
-carouselSlide.style.transform="translateX("+-size*counter+"px)";
+carouselSlide.style.transform = "translateX(" + -size * counter + "px)";
 
 
 nextBtn.addEventListener('click',()=>{
     if(counter >= carouselContents.length-1) return;
     carouselSlide.style.transition="transform 0.3s ease-in-out";
     counter++;
-    carouselSlide.style.transform="translateX("+ -size*counter+"px)";
+    carouselSlide.style.transform = "translateX(" + -size * counter + "px)";
+    
 });
 
 prevBtn.addEventListener('click',()=>{
     if(counter<=0) return;
     carouselSlide.style.transition="transform 0.3s ease-in-out";
     counter--;
-    carouselSlide.style.transform="translateX("+ -size*counter+"px)";
+    carouselSlide.style.transform = "translateX(" + -size * counter + "px)";
+    
 });
 
 
@@ -35,11 +37,13 @@ carouselSlide.addEventListener("transitionend", function () {
       carouselSlide.style.transition = "none";
       counter = carouselContents.length - 2;
       carouselSlide.style.transform = "translateX(" + -size * counter + "px)";
+      
     }
     if (carouselContents[counter].id === "firstClone") {
       carouselSlide.style.transition = "none";
       counter = carouselContents.length - counter;
       carouselSlide.style.transform = "translateX(" + -size * counter + "px)";
+      
     }
   });
   
