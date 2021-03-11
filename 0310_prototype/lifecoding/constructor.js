@@ -13,8 +13,9 @@ function PersonPlus(name,first,second,third){
     this.third = third;
 
 }
-// PersonPlus.prototype.__proto__ = Person.prototype;
-PersonPlus.prototype= Object.create(Person.prototype);
+//순서가 바뀌면안됨
+// PersonPlus.prototype.__proto__ = Person.prototype; //__proto__만 바꿈
+PersonPlus.prototype= Object.create(Person.prototype);//replace 
 PersonPlus.prototype.constructor = PersonPlus;
 PersonPlus.prototype.avg = function(){
     return(this.first+this.second+this.third)/3;
