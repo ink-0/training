@@ -17,15 +17,12 @@ kim = {
     second:20,
     sum: function(){return this.first +this.second;}
 }
-// lee = {
-//     name : 'lee',
-//     first:10, second:10,
-//     avg: function(){return (this.first+this.second)/2;}
-// }
+
 var lee = Object.create(kim);
 
 lee.name = 'lee'
 lee.first=10;
 lee.second=10;
+
 lee.avg = function(){return (this.first +this.second)/2;}
 console.log("lee.sum()",lee.avg());
