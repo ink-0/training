@@ -16,8 +16,9 @@ function DarkMode(){
     const main=$("#main");
     const mainLogo=$("#mainLogo");
     
-    console.log("어쩔",checkbox);
-    console.log("어쩔",checkbox.checked);
+    console.log("체크박스 쿼리",checkbox);
+    console.log("체크박스상황",checkbox.checked);
+
     if(checkbox.checked){
         header.style.backgroundColor = "#000000";
         container.style.backgroundColor = "#000000";
