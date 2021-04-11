@@ -1,28 +1,18 @@
+// import useInput from "./components/useInput";
+import InputSample from "./components/InputSample";
 
-import React,{useState} from "react";
-import './App.css';
-const App = () => {
-  const [count, setCount] = useState(0);
-  const [email, setEmail] = useState("");
-  const updateEmail = e => {
-    const {
-      target: { value }
-    } = e
-    console.log("e",value);
+function App() {
+  // //validator 함수
+  // const maxLen = (value) => value.length <= 10;
 
-    setEmail(value);
-  }
+  // //useInput 실행 및 초기값 지정
+  // const name = useInput("Mr.", maxLen);
+
+  //렌더링
   return (
-    <>
-      {count}
-      <button onClick={() => {
-        setCount(count+1)
-      }}>Increment</button>
-      <input placeholder="Email" value={email} onChange={updateEmail}/>
-    </>
-    
+    <div className="App">
+      <InputSample />
+    </div>
   );
-
 }
-
 export default App;
