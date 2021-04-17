@@ -14,7 +14,7 @@ input = sys.stdin.readline
 #         end_time=i[1]
 
 # print(cnt)
-
+#나중에 혼자 푸 것
 all_time=[]
 cnt=0
 end_time=0
