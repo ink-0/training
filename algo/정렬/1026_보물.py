@@ -10,6 +10,5 @@ for i in aArr:
     bMax = max(bArr)
     sum+=i*max(bArr)
     bArr.remove(bMax)
-    print(i,bArr)
 
-print("합",sum)
+print(sum)
