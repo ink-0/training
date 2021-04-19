@@ -12,10 +12,14 @@ ans.append(num_list[n//2])
 cnt = Counter(num_list)
 most = list(cnt.most_common(2))
 # print("most",most)
-if most[0][1]==most[1][1]:
-    ans.append(most[1][0])
+if n==1:
+    ans.append(most[0][0])
 else:
-     ans.append(most[0][0])
+    if most[0][1]==most[1][1]:
+        ans.append(most[1][0])
+    else:
+        ans.append(most[0][0])
+    
 ans.append(num_list[-1]-num_list[0])
 
 for i in ans:
