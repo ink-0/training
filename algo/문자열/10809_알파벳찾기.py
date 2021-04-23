@@ -13,31 +13,24 @@ import string
 #         ans.append(-1)
 
 # print(*ans)
-# for i in range(len(word)):
-#     alphaDict[word[i]]=i
-# alphaList = list(alphaDict.values())
-# # for i in range(len(alphaList)):
-# #     if(alphaList[i]==0):
-# #         alphaList[i]=-1
-# for i in range(len(alphaDict)):
-#     print(alphaDict[i])
 
 
-# print(*alphaList)
+# asciiList=[]
+# for i in word:
+#     asciiList.append(ord(i))
 
+# asciiSet = set(asciiList)
+# for j in range(97,123):
+#     if j in asciiSet:
+#         print(asciiList.index(j),end=" ")
+#     else:
+#         print(-1,end=" ")
 
+list = [-1]*26
+word = [ord(i)-ord('a') for i in input()]
 
-s=input()
-ss=[]
-for i in s:
-    ss.append(ord(i))
-   
-c=set(ss)
+for i,v in enumerate(word):
+    if(list[v]==-1):
+        list[v]=i
 
-ans=[]
-
-for k in range(97,123):
-    if k in c:
-        print(ss.index(k),end=" ")
-    else:
-        print(-1,end=" ")
+print(*list)
