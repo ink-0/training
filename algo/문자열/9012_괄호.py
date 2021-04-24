@@ -2,19 +2,23 @@ n= int(input())
 
 
 def isVps(word):
-    psL="("
-    psR=")"
-    cnt=0;
-    if(word.count(psL)!=word.count(psR)):
-        return "No"
-    elif word[-1]==psL:
-        return "No"
+    stackLst=[]
+
+    for i in word:
+        if i=="(":
+            stackLst.append("(")
+        else:
+            if len(stackLst)==0:
+                return "NO"
+            stackLst.pop()
+    if stackLst ==0:
+        return "YES"
     else:
-        return"YES"
-
-
+        return"NO"
 
 
 vpsList = [input() for _ in range(n)]
 for i in vpsList:
     print(isVps(i))
+
+
