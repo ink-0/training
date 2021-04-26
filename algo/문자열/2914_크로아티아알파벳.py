@@ -24,7 +24,7 @@ input = sys.stdin.readline
 # print(cnt)
 
 coratia=['c=','c-','dz=','d-','lj','nj','s=','z=']
-word=input()
+word=input().strip()
 
 for i in coratia:
     word=word.replace(i,'?')
