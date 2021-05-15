@@ -11,6 +11,8 @@ function App() {
   //렌더링
   return (
     <div className="App">
+      {/* <h1>Hello</h1>
+      <input placeholder="Name" value={name.value} onChange={name.onChange} /> */}
       <InputSample />
     </div>
   );
