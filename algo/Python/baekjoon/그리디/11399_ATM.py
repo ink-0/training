@@ -17,6 +17,7 @@ manLst = sorted(list(map(int,input().split())))
 for man in manLst:
     sumArr.append(man)
     cnt+=sum(sumArr)
+    # print(sum([p*(N-i) for i, p in enumerate(P)]))
 print(cnt)
 
 # 1차시도) sumArr에 인수 하나씩 더해서 sum을 해준다 
