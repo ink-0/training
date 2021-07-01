@@ -12,8 +12,8 @@ test('renders learn react link', () => {
 //   expect(headingElement).toBeInTheDocument();
 // });
 
-// it('App.js: button을 click하면 새로운 데이터가 노출된다', () => {
-//   const { getByText } = render(<App />);
-//   fireEvent.click(getByText('showdata'));
-//   getByText('newdata');
-// });
+it('App.js: button을 click하면 새로운 데이터가 노출된다', () => {
+  const { getByText } = render(<App />);
+  fireEvent.click(getByText('showdata'));
+  getByText('newdata');
+});

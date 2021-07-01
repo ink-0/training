@@ -3,7 +3,7 @@
   border: rgb(255, 14, 135) 3px dotted;
   width: 100px;
   height: 100px;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 .slide_item {
