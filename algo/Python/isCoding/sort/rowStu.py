@@ -8,3 +8,4 @@ def solution():
     for i in student:
         print(i[0],end=' ')
 solution()
+
