@@ -1,0 +1,48 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.util.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+
+<c:if test="${bookinfo == null}">
+
+<script>
+alert("Book 정보가 없습니다.");
+</script>
+
+</c:if>
+
+<c:if test="${bookinfo != null}">
+   <title>등록 도서 정보</title>
+   </head>
+   <body>
+   <h1> 도서 등록 결과 </h1>
+   <div>
+      <h2> 등록 도서 정보</h2>
+      <table border="1" width = "500" height ="300">
+         <th>항목</th>
+         <th>내용</th>
+         <tr align = "center">
+            <td>ISBN</td><td>${bookinfo.getIsbn()}</td>
+         </tr>
+         <tr align = "center">
+            <td>제목</td><td>${bookinfo.getTitle()}</td>
+         </tr>
+         <tr align = "center">
+            <td>저자</td><td>${bookinfo.getAuthor()}</td>
+         </tr>
+         <tr align = "center">
+            <td>가격</td><td>${bookinfo.getPrice()}</td>
+         </tr>
+         <tr align = "center">
+            <td>설명</td><td>${bookinfo.getComment()}</td>
+         </tr>
+      </table>
+   </div>
+   <div>
+   <a href="regist.html">추가등록</a>
+   </div>
+</c:if>
+</body>
+</html>
