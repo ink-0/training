@@ -1,4 +1,6 @@
 from collections import deque
+import math
+
 def solution(progresses, speeds):
     leftTask=[]
     day=[]
@@ -13,6 +15,9 @@ def solution(progresses, speeds):
         else:
             day.append(leftTask[i]//speeds[i])
 
+    # 한번에 하는 방법
+    # for i in range(len(progresses)):
+    #     day.append(math.ceil((100-progresses[i])/speeds[i]))
     deqDay = deque(day)
 
     
@@ -30,4 +35,4 @@ def solution(progresses, speeds):
             deqDay.popleft()
         ans.append(deployCnt)
     return ans
-            
+        
