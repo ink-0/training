@@ -1,11 +1,13 @@
 
-data = list(input())
+
+data = list(map(int,list(input())))
 ans=0
-for i in range(1,len(data)):
-    num = int(data[i])
-    if num <=1 or ans <=1:
-        ans+=num
+for i in data:
+    if i <=1 or ans <=1:
+        ans+=i
     else:
-        ans*=num
+        ans*=i
 print(ans)
+
+
 
