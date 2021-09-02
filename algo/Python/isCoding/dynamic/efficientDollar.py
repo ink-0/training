@@ -4,6 +4,7 @@ arr=[]
 
 for i in range(n):
     arr.append(int(input()))
+#
 
 # n 2 m 15
 # 2 3
