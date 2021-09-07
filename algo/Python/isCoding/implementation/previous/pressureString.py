@@ -9,7 +9,17 @@ def solution(s):
 
         for j in range(step, len(s) , step):
             if prev == s[j:j+step]:
-                cnt+1
+                cnt+=1
+            else:
+                compressed += str(cnt) + prev if cnt>=2 else prev
+                prev = s[j:j+step]
+                cnt=1
+        
+        compressed += str(cnt) + prev if cnt >=2 else prev
+        ans = min(ans, len(compressed))
+
+    return ans
+            
         
 
 def solution(s):
