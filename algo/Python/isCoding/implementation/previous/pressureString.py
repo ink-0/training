@@ -4,7 +4,6 @@ def solution(s):
     for step in range(1,len(s)//2+1):
         compressed = ""
         prev = s[0:step]
-        prev = s[0:step]
         cnt=1
 
         for j in range(step, len(s) , step):
