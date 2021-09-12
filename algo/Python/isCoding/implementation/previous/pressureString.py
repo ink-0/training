@@ -55,3 +55,41 @@ def solution(s):
         answer = min(len(ghStr), answer)
 
     return answer
+
+
+# 0913 추가
+import math
+def solution(s):
+    
+    lenS = len(s)
+    letterLen = []
+    
+    for i in range(1,math.ceil(lenS/2)+1):
+        letter = ''
+        cnt = 1
+        
+        for j in range(0,lenS-1,i):
+            cur = s[j:j+i]
+            nex = s[j+i:j+i+i]
+
+            if cur == nex:
+                cnt+=1
+            elif cur != nex and cnt != 1:
+                letter+=str(cnt)+cur
+                cnt=1
+            elif cur != nex and cnt == 1:
+                letter +=cur
+                
+            if j==lenS-i-1:
+                if cnt == 1:
+                    letter+=nex 
+                else:
+                    letter+=str(cnt)+cur
+                    
+                    
+        if letter == '':
+            letterLen.append(len(s))
+        else:
+            letterLen.append(len(letter))
+
+    return min(letterLen)
