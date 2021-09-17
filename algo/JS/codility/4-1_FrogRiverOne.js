@@ -1,3 +1,4 @@
+// 풀이1 (82%)
 function solution(X, A) {
   ans = -1;
   let idxArr = new Array(X).fill(0);
@@ -22,4 +23,19 @@ function solution(X, A) {
   }
 
   return ans;
+}
+
+// 풀이 2
+
+function solution(X, A) {
+  idxArr = new Array(A.length).fill(0);
+  idxSum = 0;
+  for (let i = 0; i < A.length; i++) {
+    if (idxArr[A[i] - 1] === 0) {
+      idxArr[A[i] - 1] = 1;
+      idxSum += 1;
+    }
+    if (idxSum === X) return i;
+  }
+  return -1;
 }
