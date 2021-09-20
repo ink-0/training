@@ -3,7 +3,7 @@ function solution(A) {
 
   const getSumArr = (arr) => arr.reduce((prev, curr) => prev + curr);
 
-  let ans = 1000;
+  let ans = 2000;
   for (let i = 1; i < P; i++) {
     const first = A.slice(0, i);
     const second = A.slice(i, P + 1);
