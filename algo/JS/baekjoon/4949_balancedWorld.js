@@ -1,11 +1,13 @@
 const fs = require('fs');
 
-let input = (fs.readFileSync('./test') + '').toString().trim().split('.');
+let input = (fs.readFileSync('./test') + '').toString().trim().split('\n');
+const open = ['(', '['];
+const close = [')', ']'];
 
-input.pop();
-input.pop();
-
+const bool = [];
 // 각 괄호가 나올때마다 조건ㅁ문 하기
+console.log('인풋', input);
+console.log('배열', input.slice(0, input.length - 1));
 const ans = input.map((sentence) => {
   const bracketStack = [];
   sentence.split('').forEach((word) => {
