@@ -19,7 +19,7 @@ const isPalindrome = (num) => {
   for (let i = 0; i < hLenNum; i++) {
     if (num[i] !== num[lenNum - i - 1]) return 0;
   }
-  return 1;
+  return 2;
 };
 
 nArr.map((n) => console.log(isPalindrome(n)));
