@@ -1,19 +1,22 @@
 const fs = require('fs');
 
-let input = (fs.readFileSync('./test') + '').toString().trim();
+let input = (fs.readFileSync('./test') + '').toString().toLowerCase();
 
 let inputArr = input.split('');
 
-let ans = {};
-inputArr.forEach((i) => {
-  let ui = i.toUpperCase();
-  if (ans[ui]) ans[ui] += 1;
-  else ans[ui] = 1;
-});
+const alpha = new Array(26).fill(0);
 
-let a = Object.keys(ans).sort((a, b) => {
-  return ans[b] - ans[a];
-});
+inputArr.forEach((i) => (alpha[i.charCodeAt() - 97] += 1));
 
-if (ans[a[0]] === ans[a[1]]) console.log('?');
-else console.log(a[0]);
+const max = Math.max(...alpha);
+const index = alpha.indexOf(max);
+
+let isSame = false;
+
+for (let i = 0; i < 26; i++) {
+  if (alpha[i] === max && index !== i) {
+    isSame = true;
+    break;
+  }
+}
+console.log(isSame ? '?' : String.fromCharCode(index + 65));
