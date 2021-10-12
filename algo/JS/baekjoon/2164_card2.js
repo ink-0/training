@@ -8,6 +8,7 @@ let input = (fs.readFileSync('./test') + '').toString().trim();
 // }
 
 // console.log(numArr[0]);
+
 class Node {
   constructor(value) {
     this.value = value;
@@ -54,17 +55,18 @@ class LinkedList {
   }
 }
 
-function getLastCard(n) {
-  const cards = new LinkedList();
+const cards = new LinkedList();
+console.log('클래스', cards);
 
-  for (let i = 1; i <= n; i++) {
-    cards.add(i);
-  }
-  while (cards.getSize() !== 1) {
-    cards.removeHead();
-    cards.add(cards.getHead());
-    cards.removeHead();
-  }
-
-  return cards.getHead();
+for (let i = 1; i <= input; i++) {
+  cards.add(i);
 }
+console.log('zkdfjl', cards);
+
+while (cards.getSize() !== 1) {
+  cards.removeHead();
+  cards.add(cards.getHead());
+  cards.removeHead();
+}
+
+console.log(cards.getHead());
