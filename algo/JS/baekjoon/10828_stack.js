@@ -34,9 +34,6 @@ let stack = [];
 //   }
 // });
 
-let top = 0;
-let ans = '';
-
 const cmdObj = {
   pop: () => stack.pop() || -1,
   size: () => stack.length,
