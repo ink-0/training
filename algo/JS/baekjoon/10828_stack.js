@@ -1,5 +1,4 @@
 const fs = require('fs');
-const { isModuleNamespaceObject } = require('util/types');
 
 let input = (fs.readFileSync('./test') + '').toString().trim().split('\n');
 
