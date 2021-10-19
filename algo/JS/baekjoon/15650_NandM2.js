@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-let [n, m] = (fs.readFileSync('./dev/stdin') + '').toString().trim().split(' ');
+let [n, m] = (fs.readFileSync('./test') + '').toString().trim().split(' ');
 
 let visit = new Array(parseInt(n)).fill(false);
 n = parseInt(n);
@@ -15,6 +15,8 @@ const back = (d, n, m, idx) => {
   }
 
   for (let i = idx; i < n; i++) {
+    // console.log('i:', i, 'visit:', visit, 'ans:', ans);
+
     if (visit[i]) continue;
     visit[i] = true;
     ans.push(i + 1);
@@ -23,5 +25,23 @@ const back = (d, n, m, idx) => {
     visit[i] = false;
   }
 };
+let result = '';
 
-back(0, n, m, 0);
+function dfs(idx, cnt) {
+  if (cnt === m) {
+    console.log(...ans);
+    return;
+  }
+
+  for (let i = idx; i < n; i++) {
+    if (visit[i]) continue;
+    visit[i] = true;
+    ans.push(i + 1);
+    dfs(i, cnt + 1);
+    ans.pop();
+    visit[i] = false;
+  }
+}
+dfs(0, 0);
+
+back(0, parseInt(n), parseInt(m), 0);
