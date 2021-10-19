@@ -27,8 +27,8 @@ const back = (d, n, m, idx) => {
 };
 let result = '';
 
-function dfs(idx, cnt) {
-  if (cnt === m) {
+function dfs(d, idx) {
+  if (d === m) {
     console.log(...ans);
     return;
   }
@@ -37,7 +37,7 @@ function dfs(idx, cnt) {
     if (visit[i]) continue;
     visit[i] = true;
     ans.push(i + 1);
-    dfs(i, cnt + 1);
+    dfs(d + 1, i);
     ans.pop();
     visit[i] = false;
   }
