@@ -12,5 +12,6 @@ while (arr.length > 0) {
   ansArr.push(arr[cnt]);
   arr.splice(cnt, 1);
 }
+
 const ans = '<' + ansArr.join(', ') + '>';
 console.log(ans);
