@@ -4,51 +4,27 @@ let input = (fs.readFileSync('./test') + '').toString().trim().split('\n');
 
 const computerCnt = Number(input.shift());
 const pair = Number(input.shift());
+let graph = [...Array(computerCnt + 1)].map(() => []);
+let visited = Array(computerCnt + 1).fill(false);
+let ans = 0;
 
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
-    this.prev = null;
+const dfs = (v) => {
+  if (visited[v]) {
+    return;
   }
-}
-
-class LinkedList {
-  constructor() {
-    this.head = null;
-    this.tail = null;
-    this._size = 0;
-  }
-
-  add(value) {
-    const newNode = new Node(value);
-
-    if (!this.head) {
-      this.head = newNode;
-    } else {
-      this.tail.next = newNode;
-      newNode.prev = this.tail;
+  visited[v] = true;
+  ans++;
+  graph[v].forEach((vertex) => {
+    if (!visited[vertex]) {
+      dfs(vertex);
     }
+  });
+};
 
-    this.tail = newNode;
-    this._size++;
-
-    return newNode;
-  }
-
-  getHead() {
-    return this.head.value;
-  }
-
-  removeHead() {
-    this.head = this.head.next;
-    this.head.prev = null;
-    this._size--;
-  }
-
-  getSize() {
-    return this._size;
-  }
+for (let i = 0; i < computerCnt - 1; i++) {
+  let [num1, num2] = input[i].split(' ').map((num) => Number(num));
+  graph.push(num1);
+  graph.push(num2);
+  dfs(1);
 }
-
-const comPair = new LinkedList();
+console.log(ans - 1);
