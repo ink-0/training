@@ -19,8 +19,6 @@ const dfs = (start) => {
       dfs(dest);
     }
   }
-  console.log('***********', visited);
-  console.log('-----------', graph);
 };
 
 input.map((i) => {
