@@ -22,6 +22,7 @@ input.map((i) => {
   const [start, dest] = i.split(' ').map((ele) => Number(ele));
   graph[start].push(dest);
   graph[dest].push(start);
+  console.log(i, 'i', graph);
 });
 
 dfs(1);
