@@ -1,34 +1,29 @@
 const input = [];
 let graph, visited, result;
+let input = (fs.readFileSync('.test') + '')
+  .toString()
+  .trim()
+  .split(' ')
+  .map((ele) => Number(ele));
 
-const strToNumArr = (str) =>
-  str.split(' ').map((numString) => Number(numString));
+const [N, M, V] = input(input.shift());
+graph = [...Array(N + 1)].map(() => []);
+visited = [...Array(N + 1)].fill(false);
+let v1, v2;
+input.forEach((str) => {
+  [v1, v2] = input(str);
+  insertEdge(v1, v2);
+  insertEdge(v2, v1);
+});
 
-require('readline')
-  .createInterface(process.stdin, process.stdout)
-  .on('line', function (line) {
-    input.push(line.trim());
-  })
-  .on('close', function () {
-    const [N, M, V] = strToNumArr(input.shift());
-    graph = [...Array(N + 1)].map(() => []);
-    visited = [...Array(N + 1)].fill(false);
-    let v1, v2;
-    input.forEach((str) => {
-      [v1, v2] = strToNumArr(str);
-      insertEdge(v1, v2);
-      insertEdge(v2, v1);
-    });
+result = [];
+dfs(V);
+console.log(result.join(' '));
 
-    result = [];
-    dfs(V);
-    console.log(result.join(' '));
-
-    visited.fill(false);
-    result = [];
-    bfs(V);
-    console.log(result.join(' '));
-  });
+visited.fill(false);
+result = [];
+bfs(V);
+console.log(result.join(' '));
 
 const insertEdge = (vFront, vBack) => {
   let index;
