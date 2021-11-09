@@ -1,22 +1,19 @@
-const input = [];
-let graph, visited, result;
-let input = (fs.readFileSync('.test') + '')
-  .toString()
-  .trim()
-  .split(' ')
-  .map((ele) => Number(ele));
+const fs = require('fs');
 
-const [N, M, V] = input(input.shift());
-graph = [...Array(N + 1)].map(() => []);
-visited = [...Array(N + 1)].fill(false);
-let v1, v2;
+let input = (fs.readFileSync('./test') + '').toString().trim().split('\n');
+console.log(input);
+
+const [N, M, V] = input.shift();
+let graph = [...Array(N + 1)].map(() => []);
+let visited = [...Array(N + 1)].fill(false);
+let result = [];
+
 input.forEach((str) => {
-  [v1, v2] = input(str);
+  let [v1, v2] = str.split(' ');
   insertEdge(v1, v2);
   insertEdge(v2, v1);
 });
 
-result = [];
 dfs(V);
 console.log(result.join(' '));
 
@@ -25,31 +22,26 @@ result = [];
 bfs(V);
 console.log(result.join(' '));
 
-const insertEdge = (vFront, vBack) => {
-  let index;
-  for (index = 0; index < graph[vFront].length; index++) {
-    if (graph[vFront][index] < vBack) {
-      continue;
-    }
+const insertEdge = (start, dest) => {
+  for (let i = 0; i < graph[start].length; i++) {
+    if (graph[start][i] < dest) continue;
 
-    if (graph[vFront][index] === vBack) {
-      index = null;
-    }
+    if (graph[start][i] === dest) i = null;
+
     break;
   }
 
-  if (index !== null) {
-    graph[vFront].splice(index, 0, vBack);
+  if (i !== null) {
+    graph[start].splice(i, 0, dest);
   }
 };
 
 const dfs = (v) => {
-  if (visited[v]) {
-    return;
-  }
+  if (visited[v]) return;
 
   visited[v] = true;
   result.push(v);
+
   graph[v].forEach((vertex) => {
     if (!visited[vertex]) {
       dfs(vertex);
