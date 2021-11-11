@@ -25,9 +25,7 @@ console.log(result.join(' '));
 const insertEdge = (start, dest) => {
   for (let i = 0; i < graph[start].length; i++) {
     if (graph[start][i] < dest) continue;
-
     if (graph[start][i] === dest) i = null;
-
     break;
   }
 
