@@ -5,47 +5,49 @@ let [num, varName] = (fs.readFileSync('./test') + '')
   .trim()
   .split(' ');
 
-let ans = [];
+function solution(num, varName) {
+  const len = varName.length;
+  let arr = null;
 
-const getSnakeCase = (word) => {
-  let wordArr = word.split('');
-  let result = wordArr.map((word, idx) => {
-    if (idx === 0) return word.toLowerCase();
-    else if (word === word.toUpperCase() && word !== '_')
-      return '_' + word.toLowerCase();
-    else return word;
-  });
-  return result.join('');
-};
+  switch (num) {
+    case 2:
+      arr = varName.split('_');
+      break;
+    case 1:
+    case 3:
+      arr = [];
+      for (let i = 0; i < len; i++) {
+        if ('A' <= varName[i] && varName[i] <= 'Z') arr.push(i);
+      }
+      arr.push(varName.length);
+      if (num === 3) arr.shift();
 
-const getCamelCase = (word) => {
-  let wordArr = word.split('');
-  let isNextUpper = false;
-  let result = wordArr.map((word, idx) => {
-    if (word === '_') {
-      isNextUpper = true;
-      return null;
-    } else if (isNextUpper) {
-      isNextUpper = false;
-      return word.toUpperCase();
-    } else if (idx === 0) return word.toLowerCase();
-    else return word;
-  });
+      arr = arr?.reduce(
+        (a, c) => {
+          const x = a.pop();
+          a.push(varName.slice(x, c).toLowerCase(), c);
+          return a;
+        },
+        [0]
+      );
+      arr.pop();
+      break;
+  }
 
-  return result.join('');
-};
+  let output = '';
+  output +=
+    arr?.reduce((a, c) => {
+      return a + c.slice(0, 1).toUpperCase() + c.slice(1);
+    }) + '\n';
+  output +=
+    arr?.reduce((a, c) => {
+      return a + '_' + c;
+    }) + '\n';
+  output +=
+    arr?.reduce((a, c) => {
+      return a + c.slice(0, 1).toUpperCase() + c.slice(1);
+    }, '') + '\n';
 
-const getPascalCase = (word) => {
-  let wordArr = word.split('');
-  let result = wordArr.map((word, idx) => {
-    if (idx === 0) return word.toUpperCase();
-    else if (word === '_') return null;
-    else return word;
-  });
-  return result.join('');
-};
-
-// let varNameArr = varName.split('');
-console.log(getCamelCase(varName));
-console.log(getSnakeCase(varName));
-console.log(getPascalCase(varName));
+  return output;
+}
+solution(num, varName);
